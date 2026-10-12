@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Sunday Loaf Bakehouse | Order today, collect fresh tomorrow</title>
+<meta name="description" content="Small-batch sourdough, pastries and cakes. Order by 3pm, collect tomorrow.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF7F4;--card:#fff;--ink:#3A211B;--muted:#7A5C54;--rose:#F3C9C2;--pist:#A8C298;--berry:#B0354F;--line:#EBD5CF;
+--hf:"Fraunces",Georgia,"Times New Roman",serif;--bf:"DM Sans","Segoe UI",system-ui,Arial,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1E1311;--card:#2A1B18;--ink:#F8E9E4;--muted:#C8A9A1;--line:#43302B}}
+:root[data-theme="dark"]{--bg:#1E1311;--card:#2A1B18;--ink:#F8E9E4;--muted:#C8A9A1;--line:#43302B}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.6 var(--bf);padding-bottom:5rem}
+h1,h2,h3{font-family:var(--hf);margin:0;line-height:1.08;letter-spacing:-.01em}
+h1{font-size:clamp(2.7rem,8vw,5rem);font-weight:800}
+h2{font-size:clamp(1.9rem,4.6vw,2.8rem);font-weight:600}
+h3{font-size:1.2rem;font-weight:600}
+p{margin:0}
+.wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
+section{padding:clamp(3rem,7vw,5rem) 0}
+:focus-visible{outline:3px solid var(--berry);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;font:600 1rem var(--bf);text-decoration:none;padding:.85rem 1.5rem;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-main{background:var(--berry);color:#fff}
+.btn-soft{background:var(--rose);color:#3A211B}
+[aria-disabled="true"]{opacity:.45;pointer-events:none}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+.logo{font:800 1.3rem var(--hf);text-decoration:none;color:var(--ink)}
+.hero-grid{display:grid;gap:2.5rem;align-items:center}
+.hero-photo{width:100%;height:260px;object-fit:cover;border-radius:22px;margin-top:1.5rem;box-shadow:0 12px 32px rgba(58,33,27,.12)}
+@media(min-width:880px){.hero-photo{height:100%;min-height:360px;margin-top:0}}
+.item{overflow:hidden}
+.item-photo{width:92px;height:92px;flex:none;object-fit:cover;border-radius:14px}
+.item-main{display:flex;align-items:center;gap:1rem;min-width:0}
+.item-copy{min-width:0}
+@media(max-width:500px){.item-photo{width:74px;height:74px}.item{padding:1rem}.item-main{gap:.75rem}}
+@media(min-width:880px){.hero-grid{grid-template-columns:1.2fr .8fr}}
+.hero .sub{font-size:1.2rem;color:var(--muted);max-width:40ch;margin:1.2rem 0 1.8rem}
+.cta{display:flex;flex-wrap:wrap;gap:.8rem}
+.today{background:var(--rose);color:#3A211B;border-radius:28px;padding:2rem}
+.today h3{margin-bottom:1rem}
+.today ul{list-style:none;margin:0;padding:0;display:grid;gap:.8rem}
+.today li{display:flex;gap:.7rem;align-items:flex-start}
+.today li::before{content:"";flex:none;width:12px;height:12px;border-radius:50%;background:var(--berry);margin-top:.5rem}
+.pill{display:inline-block;padding:.25rem .85rem;border-radius:99px;background:var(--pist);color:#1F2E17;font-size:.92rem;font-weight:600;margin-bottom:1.1rem}
+.pill.off{background:var(--line);color:var(--muted)}
+.tabs{display:flex;gap:.5rem;margin:1.6rem 0;flex-wrap:wrap}
+.tab{font:600 1rem var(--bf);padding:.6rem 1.3rem;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.menu{display:grid;gap:1rem}
+@media(min-width:700px){.menu{grid-template-columns:repeat(2,1fr)}}
+.item{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:1.3rem 1.4rem;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.item p{color:var(--muted);font-size:.97rem;margin-top:.2rem}
+.tag{display:inline-block;margin-top:.5rem;font-size:.8rem;font-weight:600;background:var(--pist);color:#1F2E17;border-radius:6px;padding:.1rem .5rem}
+.price{font:600 1.1rem var(--hf);white-space:nowrap}
+.qty{display:flex;align-items:center;gap:.5rem;margin-top:.6rem;justify-content:flex-end}
+.qty button{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:600 1.2rem var(--bf);cursor:pointer}
+.qty button.add{background:var(--berry);border-color:var(--berry);color:#fff}
+.qty output{min-width:1.4rem;text-align:center;font-weight:600}
+.note{color:var(--muted);font-size:.95rem;margin-top:1.2rem}
+.order{background:var(--card);border-block:1px solid var(--line)}
+.order-grid{display:grid;gap:2rem;margin-top:1.5rem}
+@media(min-width:850px){.order-grid{grid-template-columns:1.2fr 1fr}}
+#lines{list-style:none;margin:0;padding:0}
+#lines li{display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px dashed var(--line)}
+.total{display:flex;justify-content:space-between;font:600 1.3rem var(--hf);margin-top:1rem}
+label{display:block;font-weight:600;margin:0 0 .35rem}
+select,input{font:inherit;width:100%;padding:.8rem 1rem;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);margin-bottom:1rem}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--ink);color:var(--bg);padding:.8rem 0 calc(.8rem + env(safe-area-inset-bottom,0px));transform:translateY(110%);transition:transform .3s}
+.bar.show{transform:none}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.bar .btn{padding:.6rem 1.2rem}
+table{width:100%;border-collapse:collapse;max-width:420px}
+td{padding:.55rem 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right}
+tr.now{font-weight:700;color:var(--berry)}
+:root[data-theme="dark"] tr.now{color:#F28BA3}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) tr.now{color:#F28BA3}}
+footer{padding:1.6rem 0;color:var(--muted);font-size:.92rem}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <!-- SWAP: bakery name -->
+  <a class="logo" href="#top">The Sunday Loaf</a>
+  <a class="btn btn-main" href="#order">Your order</a>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap hero-grid">
+  <div>
+    <span class="pill off" id="open">Checking hours...</span>
+    <h1>Order today, collect warm tomorrow.</h1>
+    <p class="sub">Small-batch sourdough, pastries and celebration cakes, baked every morning from 5am.</p>
+    <div class="cta"><a class="btn btn-main" href="#menu">See what's baking</a><a class="btn btn-soft" href="#visit">Opening hours</a></div>
+  </div>
+  <div>
+    <img class="hero-photo" src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=1200&q=85" alt="Freshly baked artisan sourdough bread on a bakery counter" fetchpriority="high">
+    <div class="today" style="margin-top:1.2rem">
+    <h3>How it works</h3>
+    <ul>
+      <li>Add what you'd like. No account, no card needed.</li>
+      <li>Order by 3pm for collection from 7:30 the next morning.</li>
+      <li>Pay in the shop when you pick up.</li>
+    </ul>
+    </div>
+  </div>
+</div></section>
+
+<section id="menu" style="padding-top:0"><div class="wrap">
+  <h2>What's baking</h2>
+  <div class="tabs" id="tabs"></div>
+  <div class="menu" id="list"></div>
+  <p class="note">Everything is made in a kitchen that handles gluten, nuts, milk, eggs and sesame. Ask us about allergens before you order.</p>
+</div></section>
+
+<section class="order" id="order"><div class="wrap">
+  <h2>Your order</h2>
+  <div class="order-grid">
+    <div>
+      <ul id="lines"></ul>
+      <div class="total"><span>Total</span><span id="total">€0</span></div>
+    </div>
+    <div>
+      <label for="day">Collect on</label><select id="day"></select>
+      <label for="when">Time</label>
+      <select id="when"><option>Morning (7:30 - 12:00)</option><option>Afternoon (12:00 - 16:30)</option></select>
+      <label for="name">Your name</label><input id="name" type="text" autocomplete="given-name">
+      <!-- SWAP: WhatsApp number in script below (const WA) -->
+      <a class="btn btn-main" id="send" role="button" aria-disabled="true" target="_blank" rel="noopener">Send order on WhatsApp</a>
+      <p class="note">We confirm by message. Pay in the shop.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="visit"><div class="wrap">
+  <h2>Visit us</h2>
+  <!-- SWAP: address and hours -->
+  <p style="margin:1rem 0 1.5rem">4 Bridge Street, Co. Kildare, Ireland<br><a href="tel:+35312345678">01 234 5678</a></p>
+  <table aria-label="Opening hours">
+    <tr data-d="1"><td>Monday</td><td>Closed</td></tr>
+    <tr data-d="2"><td>Tuesday</td><td>7:30 - 17:00</td></tr>
+    <tr data-d="3"><td>Wednesday</td><td>7:30 - 17:00</td></tr>
+    <tr data-d="4"><td>Thursday</td><td>7:30 - 17:00</td></tr>
+    <tr data-d="5"><td>Friday</td><td>7:30 - 17:00</td></tr>
+    <tr data-d="6"><td>Saturday</td><td>7:30 - 17:00</td></tr>
+    <tr data-d="0"><td>Sunday</td><td>8:00 - 14:00</td></tr>
+  </table>
+</div></section>
+</main>
+
+<footer><div class="wrap">Concept website for a fictional business, designed and built by Ayomide Ogun-Ajala.</div></footer>
+
+<div class="bar" id="bar"><div class="wrap"><span id="barTxt"></span><a class="btn btn-soft" href="#order">Review order</a></div></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const WA="353000000000"; // SWAP: WhatsApp number, country code first, no +
+const eur=n=>"€"+(n%1?n.toFixed(2):n);
+const ITEMS=[
+ {id:"sd",c:"Bread",n:"Sourdough loaf",d:"48-hour ferment with a crackling crust",p:5.5,t:"Vegan",img:"https://images.unsplash.com/photo-1585478259715-876acc5be8eb?auto=format&fit=crop&w=320&q=75"},
+ {id:"sb",c:"Bread",n:"Brown soda bread",d:"Wholemeal and buttermilk, baked daily",p:4.5,img:"https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=320&q=75"},
+ {id:"sl",c:"Bread",n:"Seeded batch loaf",d:"Sunflower, pumpkin and flax seeds",p:4.8,img:"https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=320&q=75"},
+ {id:"fo",c:"Bread",n:"Rosemary focaccia",d:"Olive oil, sea salt, soft inside",p:4,t:"Vegan",img:"https://images.unsplash.com/photo-1619531040576-f94167406618?auto=format&fit=crop&w=320&q=75"},
+ {id:"cr",c:"Pastries",n:"Butter croissant",d:"Laminated by hand, flaky all the way",p:3.2,img:"https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=320&q=75"},
+ {id:"pc",c:"Pastries",n:"Pain au chocolat",d:"Two bars of dark chocolate",p:3.5,img:"https://images.unsplash.com/photo-1623334044303-241021148842?auto=format&fit=crop&w=320&q=75"},
+ {id:"cs",c:"Pastries",n:"Cinnamon swirl",d:"Sticky, soft and just sweet enough",p:3.4,img:"https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=320&q=75"},
+ {id:"fs",c:"Pastries",n:"Fruit scone",d:"Served best with jam and butter",p:2.8,img:"https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&w=320&q=75"},
+ {id:"ck",c:"Cakes",n:"Chocolate fudge cake",d:"Whole cake, serves 8",p:28,img:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=320&q=75"},
+ {id:"ld",c:"Cakes",n:"Lemon drizzle loaf",d:"Zesty, moist, sliceable",p:12,img:"https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&w=320&q=75"},
+ {id:"ct",c:"Cakes",n:"Carrot cake",d:"Whole cake with cream cheese icing, serves 8",p:26,img:"https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=320&q=75"},
+ {id:"bw",c:"Cakes",n:"Brownie box",d:"Six fudgy squares",p:14,img:"https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=320&q=75"}];
+const CATS=["Bread","Pastries","Cakes"],Q={};let cat="Bread";
+const HOURS={0:[8,14],1:null,2:[7.5,17],3:[7.5,17],4:[7.5,17],5:[7.5,17],6:[7.5,17]};
+const dublin=()=>new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/Dublin"}));
+
+function status(){const n=dublin(),h=HOURS[n.getDay()],t=n.getHours()+n.getMinutes()/60,el=$("#open");
+  const f=x=>Math.floor(x)+":"+(x%1?"30":"00");
+  if(h&&t>=h[0]&&t<h[1]){el.textContent="Open now until "+f(h[1]);el.className="pill"}else{el.textContent="Closed right now";el.className="pill off"}
+  $$("[data-d]").forEach(r=>r.classList.toggle("now",+r.dataset.d===n.getDay()))}
+
+function drawMenu(){
+  $("#tabs").innerHTML=CATS.map(c=>`<button type="button" class="tab" aria-pressed="${c===cat}" data-cat="${c}">${c}</button>`).join("");
+  $("#list").innerHTML=ITEMS.filter(i=>i.c===cat).map(i=>`<div class="item"><div class="item-main"><img class="item-photo" src="${i.img}" alt="${i.n}" loading="lazy"><div class="item-copy"><h3>${i.n}</h3><p>${i.d}</p>${i.t?`<span class="tag">${i.t}</span>`:""}</div></div>
+   <div><div class="price">${eur(i.p)}</div><div class="qty"><button type="button" data-a="sub" data-id="${i.id}" aria-label="Remove one ${i.n}">-</button><output>${Q[i.id]||0}</output><button type="button" class="add" data-a="add" data-id="${i.id}" aria-label="Add one ${i.n}">+</button></div></div></div>`).join("")}
+
+function update(){
+  const rows=ITEMS.filter(i=>Q[i.id]),count=rows.reduce((s,i)=>s+Q[i.id],0),total=rows.reduce((s,i)=>s+Q[i.id]*i.p,0);
+  $("#lines").innerHTML=rows.length?rows.map(i=>`<li><span>${Q[i.id]} x ${i.n}</span><span>${eur(Q[i.id]*i.p)}</span></li>`).join(""):'<li style="color:var(--muted)">Nothing yet. Add something from the menu above.</li>';
+  $("#total").textContent=eur(total);
+  $("#bar").classList.toggle("show",count>0);$("#barTxt").textContent=`${count} item${count>1?"s":""}, ${eur(total)}`;
+  const name=$("#name").value.trim(),a=$("#send"),ok=count>0&&name;a.setAttribute("aria-disabled",String(!ok));
+  if(ok){const list=rows.map(i=>`${Q[i.id]} x ${i.n}`).join(", ");
+    a.href="https://wa.me/"+WA+"?text="+encodeURIComponent(`Hi, pre-order for ${$("#day").value}, ${$("#when").value}: ${list}. Total ${eur(total)}. Name: ${name}`)}else a.removeAttribute("href")}
+
+const days=[],n0=dublin();
+for(let i=1;days.length<6&&i<12;i++){const x=new Date(n0);x.setDate(n0.getDate()+i);if(HOURS[x.getDay()])days.push(x.toLocaleDateString("en-IE",{weekday:"long",day:"numeric",month:"short"}))}
+$("#day").innerHTML=days.map((d,i)=>`<option>${i===0?d+" (tomorrow)":d}</option>`).join("");
+
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-cat]");if(t){cat=t.dataset.cat;drawMenu();return}
+  const b=e.target.closest("[data-a]");if(!b)return;const id=b.dataset.id;
+  Q[id]=Math.max(0,(Q[id]||0)+(b.dataset.a==="add"?1:-1));drawMenu();update()});
+$("#name").addEventListener("input",update);$("#day").addEventListener("change",update);$("#when").addEventListener("change",update);
+status();drawMenu();update();setInterval(status,60000);
+</script>
+</body>
+</html>

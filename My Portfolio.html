@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- SWAP: page title + description (this is what Google shows) -->
+<title>Ayomide Ogun-Ajala | Websites that fill your calendar</title>
+<meta name="description" content="Fast, clean websites for local businesses in Ireland. Live in about 10 days, from €300.">
+<meta name="theme-color" content="#0E1B33">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================
+   THEME: change these and the whole page re-colours
+   ========================================================== */
+:root{
+  --navy:#0E1B33;        /* main dark colour */
+  --navy-soft:#1B2C4F;   /* lighter navy for borders on dark */
+  --ink:#16213A;         /* body text on white */
+  --muted:#5B6579;       /* secondary text */
+  --paper:#FFFFFF;       /* page background */
+  --mist:#F3F5F9;        /* light section background */
+  --line:#E2E6EE;        /* hairlines on light */
+  --accent:#3B63F5;      /* the one accent: buttons, highlights */
+  --accent-dark:#2A4BD0;
+
+  --font-head:"Bricolage Grotesque","Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+  --font-body:"Figtree","Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+  --radius:20px;
+  --shadow:0 1px 2px rgba(14,27,51,.05),0 8px 24px -8px rgba(14,27,51,.12);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;font-family:var(--font-body);font-size:1.0625rem;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--font-head);line-height:1.08;margin:0;letter-spacing:-.02em;color:var(--navy)}
+h1{font-size:clamp(2.5rem,7vw,4.6rem);font-weight:800}
+h2{font-size:clamp(1.9rem,4.4vw,2.9rem);font-weight:700}
+h3{font-size:1.25rem;font-weight:700;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+img,svg{max-width:100%;display:block}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+section{padding:clamp(4rem,9vw,7rem) 0}
+.lede{color:var(--muted);font-size:1.15rem;max-width:56ch;margin-top:1rem}
+.skip{position:absolute;left:-999px;top:0;background:var(--navy);color:#fff;padding:.7rem 1rem;z-index:100}
+.skip:focus{left:1rem;top:1rem}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font:600 1rem var(--font-body);text-decoration:none;padding:.95rem 1.6rem;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 20px -8px rgba(59,99,245,.7)}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line);color:var(--navy);background:#fff}
+.btn-ghost:hover{border-color:var(--navy);transform:translateY(-2px)}
+.btn-sm{padding:.6rem 1.1rem;font-size:.95rem}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+.nav.scrolled{border-color:var(--line);box-shadow:0 6px 20px -14px rgba(14,27,51,.3)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:1rem}
+.brand{font:800 1.15rem var(--font-head);color:var(--navy);text-decoration:none;letter-spacing:-.02em}
+.nav ul{display:flex;gap:1.8rem;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.98rem}
+.nav ul a:hover{color:var(--navy)}
+@media(max-width:760px){.nav ul{display:none}}
+
+/* Hero */
+.hero{padding-top:clamp(3rem,7vw,5.5rem);padding-bottom:clamp(3rem,7vw,5rem)}
+.hero-grid{display:grid;gap:3rem;align-items:center}
+@media(min-width:900px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:4rem}}
+.hero .lede{font-size:1.25rem}
+.hero-photo{width:100%;height:100%;min-height:300px;max-height:430px;object-fit:cover;border-radius:18px;box-shadow:0 24px 55px -22px rgba(14,27,51,.35)}
+@media(max-width:899px){.hero-photo{min-height:250px;max-height:340px}}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2rem}
+.hero-note{margin-top:1.1rem;font-size:.95rem;color:var(--muted)}
+
+/* Browser mockup: the one memorable thing on the page */
+.browser{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 60px -24px rgba(14,27,51,.35),var(--shadow);overflow:hidden;transform:rotate(1.2deg)}
+.browser-bar{display:flex;align-items:center;gap:.5rem;padding:.7rem .9rem;background:var(--mist);border-bottom:1px solid var(--line)}
+.dot{width:10px;height:10px;border-radius:50%;background:#CBD2DF}
+.url{margin-left:.6rem;flex:1;background:#fff;border:1px solid var(--line);border-radius:999px;padding:.2rem .8rem;font-size:.78rem;color:var(--muted)}
+.site{padding:1.4rem 1.4rem 1.6rem;background:var(--navy);color:#fff}
+.site-nav{display:flex;justify-content:space-between;align-items:center;font:700 .85rem var(--font-head);margin-bottom:2rem}
+.site-nav span:last-child{font:500 .7rem var(--font-body);opacity:.7}
+.site h4{font:800 clamp(1.5rem,3.4vw,2.1rem)/1.05 var(--font-head);margin:0 0 .6rem;letter-spacing:-.02em}
+.site p{font-size:.82rem;opacity:.75;max-width:30ch}
+.site-btn{display:inline-block;margin-top:1rem;background:var(--accent);color:#fff;font:600 .78rem var(--font-body);padding:.5rem 1rem;border-radius:999px;animation:pulse 2.8s ease-in-out 1.2s 2}
+.slots{display:flex;gap:.5rem;margin-top:1.4rem}
+.slots span{flex:1;text-align:center;font-size:.72rem;padding:.55rem 0;border-radius:10px;border:1px solid var(--navy-soft);background:var(--navy-soft)}
+.slots span.on{background:#fff;color:var(--navy);font-weight:600;border-color:#fff}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(59,99,245,.6)}50%{box-shadow:0 0 0 10px rgba(59,99,245,0)}}
+
+/* Trust strip */
+.trust{padding:0}
+.trust ul{list-style:none;margin:0;padding:1.6rem 0;display:grid;gap:1rem;border-block:1px solid var(--line)}
+@media(min-width:760px){.trust ul{grid-template-columns:repeat(3,1fr);gap:2rem}}
+.trust li{display:flex;gap:.8rem;align-items:flex-start;font-weight:500;color:var(--navy);line-height:1.35}
+.trust small{display:block;color:var(--muted);font-weight:400;font-size:.9rem;margin-top:.15rem}
+.tick{flex:none;width:26px;height:26px;border-radius:50%;background:var(--navy);display:grid;place-items:center;margin-top:2px}
+.tick svg{width:14px;height:14px;stroke:#fff}
+
+/* Cards */
+.cards{display:grid;gap:1.25rem;margin-top:3rem}
+@media(min-width:700px){.cards{grid-template-columns:repeat(2,1fr)}}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.9rem;box-shadow:var(--shadow);transition:transform .25s ease,box-shadow .25s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 36px -16px rgba(14,27,51,.28)}
+.icon{width:48px;height:48px;border-radius:14px;background:var(--mist);display:grid;place-items:center;margin-bottom:1.1rem}
+.icon svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card p{color:var(--muted);margin-top:.5rem}
+
+/* How it works (dark band) */
+.dark{background:var(--navy);color:#fff}
+.dark h2{color:#fff}
+.dark .lede{color:#B6C0D6}
+.steps{list-style:none;margin:3rem 0 0;padding:0;display:grid;gap:1.25rem;counter-reset:s}
+@media(min-width:800px){.steps{grid-template-columns:repeat(3,1fr)}}
+.steps li{counter-increment:s;background:var(--navy-soft);border-radius:var(--radius);padding:1.9rem;position:relative}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--accent);color:#fff;font:700 1rem var(--font-head);margin-bottom:1.1rem}
+.steps h3{color:#fff}
+.steps p{color:#B6C0D6;margin-top:.5rem}
+
+/* Proof */
+.proof{background:var(--mist)}
+.work{display:grid;gap:1.25rem;margin-top:3rem}
+@media(min-width:800px){.work{grid-template-columns:repeat(3,1fr)}}
+.work figure{margin:0;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .25s}
+.work figure:hover{transform:translateY(-4px)}
+.thumb{height:210px;position:relative;overflow:hidden;background:#e8edf7}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.work figure:hover .thumb img{transform:scale(1.04)}
+.thumb b{position:absolute;left:1rem;bottom:1rem;background:rgba(14,27,51,.82);color:#fff;padding:.4rem .65rem;border-radius:8px;font:800 1.05rem var(--font-head);letter-spacing:-.02em}
+.thumb i{display:none}
+.thumb b{font:800 1.15rem var(--font-head);letter-spacing:-.02em}
+.thumb i{display:block;height:7px;border-radius:4px;background:currentColor;opacity:.25;width:60%}
+.thumb i+i{width:40%}
+.t1{background:var(--navy);color:#fff}
+.t2{background:#E8EEFF;color:var(--navy)}
+.t3{background:var(--accent);color:#fff}
+.work figcaption{padding:1.1rem 1.3rem 1.3rem}
+.work figcaption strong{display:block;color:var(--navy)}
+.work figcaption span{color:var(--muted);font-size:.95rem}
+.early{margin-top:2rem;background:#fff;border:1px dashed #B9C3DA;border-radius:var(--radius);padding:1.2rem 1.5rem;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between}
+.early p{max-width:60ch}
+
+/* Pricing */
+.plans{display:grid;gap:1.25rem;margin-top:3rem;align-items:stretch}
+@media(min-width:900px){.plans{grid-template-columns:repeat(3,1fr)}}
+.plan{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:2rem;display:flex;flex-direction:column;box-shadow:var(--shadow);position:relative}
+.plan.best{background:var(--navy);color:#fff;border-color:var(--navy);box-shadow:0 30px 50px -24px rgba(14,27,51,.55)}
+@media(min-width:900px){.plan.best{transform:translateY(-12px)}}
+.plan.best h3{color:#fff}
+.badge{position:absolute;top:-13px;left:2rem;background:var(--accent);color:#fff;font:600 .82rem var(--font-body);padding:.3rem .8rem;border-radius:999px}
+.price{font:800 3rem var(--font-head);letter-spacing:-.03em;margin:.8rem 0 .2rem;color:inherit}
+.price small{font:500 .95rem var(--font-body);color:var(--muted);letter-spacing:0}
+.best .price small,.best .for{color:#B6C0D6}
+.for{color:var(--muted);font-size:.98rem}
+.plan ul{list-style:none;margin:1.5rem 0 2rem;padding:0;display:grid;gap:.7rem;flex:1}
+.plan li{display:flex;gap:.6rem;align-items:flex-start;font-size:1rem}
+.plan li svg{flex:none;width:18px;height:18px;margin-top:4px;stroke:var(--accent);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.best li svg{stroke:#8FA8FF}
+.best .btn-ghost{background:#fff;border-color:#fff}
+.fineprint{margin-top:1.8rem;color:var(--muted);font-size:.95rem}
+
+/* Final CTA */
+.final{background:var(--navy);color:#fff;text-align:center}
+.final h2{color:#fff;max-width:20ch;margin-inline:auto}
+.final p{color:#B6C0D6;margin:1.1rem auto 2rem;max-width:46ch;font-size:1.15rem}
+.final .links{margin-top:1.2rem;color:#B6C0D6;font-size:.98rem}
+.final .links a{color:#fff}
+
+/* Footer */
+footer{padding:2rem 0;color:var(--muted);font-size:.92rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem}
+
+/* Motion: one gentle reveal, nothing else moves on its own */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="top">
+  <div class="wrap">
+    <!-- SWAP: your brand name -->
+    <a class="brand" href="#top">Ayomide Ogun-Ajala</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">How it works</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+    </nav>
+    <!-- SWAP: your email (or a WhatsApp link: https://wa.me/353XXXXXXXXX) -->
+    <a class="btn btn-primary btn-sm" href="mailto:ayomide5462@gmail.com?subject=Website%20quote">Get a free quote</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ 1. HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <!-- SWAP: headline = the result the customer gets. Rewrite for your niche (e.g. "barbers", "cafés") -->
+      <h1>A website that turns searches into bookings.</h1>
+      <p class="lede">I design and build fast, clean websites for local businesses, so customers find you, trust you and get in touch in seconds.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="mailto:ayomide5462@gmail.com?subject=Website%20quote">Get a free quote</a>
+        <a class="btn btn-ghost" href="#pricing">See prices</a>
+      </div>
+      <p class="hero-note">Free quote within 24 hours. No obligation.</p>
+    </div>
+
+    <!-- Real photography makes the landing page feel more personal and polished. -->
+    <img class="hero-photo" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85" alt="Website analytics dashboard displayed on a laptop" fetchpriority="high">
+    <!-- Decorative mockup (kept as a second visual proof point). -->
+    <div class="browser" aria-hidden="true" style="display:none">
+      <div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">yourbusiness.ie</span></div>
+      <div class="site">
+        <div class="site-nav"><span>Your Business</span><span>Menu &nbsp; Contact</span></div>
+        <h4>Fresh cuts.<br>Booked in 30 seconds.</h4>
+        <p>Walk-ins welcome. Mobile-friendly, always open online.</p>
+        <span class="site-btn">Book now</span>
+        <div class="slots"><span>10:00</span><span class="on">10:30</span><span>11:00</span><span>11:30</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. TRUST STRIP ============ -->
+<!-- SWAP: keep these only if true. Add real project counts once you have them -->
+<div class="trust">
+  <div class="wrap">
+    <ul>
+      <li class="reveal"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span>BSc Computer Science and Software Engineering<small>Maynooth University, 2:1</small></span></li>
+      <li class="reveal"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span>13 months as a software engineer at Oracle<small>Professional-grade code, not a template</small></span></li>
+      <li class="reveal"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span>Live in about 10 days<small>One person, one point of contact</small></span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ 3. SERVICES ============ -->
+<section id="services">
+  <div class="wrap">
+    <div class="reveal">
+      <h2>What you get</h2>
+      <p class="lede">Everything your business needs to look sharp online and get found, handled by one person.</p>
+    </div>
+    <!-- SWAP: edit titles/blurbs to match what you actually offer -->
+    <div class="cards">
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div>
+        <h3>A site that makes people call</h3>
+        <p>A clear, fast page that shows what you do, where you are and how to reach you, in the first screen.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
+        <h3>Looks perfect on every phone</h3>
+        <p>Most of your customers will find you on their phone. It will load quickly and be easy to use there.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <h3>Found when locals search</h3>
+        <p>Set up for Google, so people nearby searching for what you do see you first.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></div>
+        <h3>Bookings and enquiries on autopilot</h3>
+        <p>A booking link, WhatsApp button or contact form, so customers reach you without the back and forth.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. HOW IT WORKS ============ -->
+<section class="dark" id="process">
+  <div class="wrap">
+    <div class="reveal">
+      <h2>Three steps. About ten days.</h2>
+      <p class="lede">You tell me about your business. I do the rest.</p>
+    </div>
+    <ol class="steps">
+      <li class="reveal"><h3>Quick chat</h3><p>A 15-minute call or message. You tell me what you do and who your customers are.</p></li>
+      <li class="reveal"><h3>See your draft</h3><p>Within a week you get a working version to click through. Ask for changes until it feels right.</p></li>
+      <li class="reveal"><h3>Go live</h3><p>I set up your domain and hosting and launch it. You walk away with a site that works.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 5. PROOF ============ -->
+<!-- SWAP: replace these concept cards with real projects + testimonials as soon as you have them -->
+<section class="proof" id="work">
+  <div class="wrap">
+    <div class="reveal">
+      <h2>The kind of site you'll get</h2>
+      <p class="lede">Concept designs for local businesses. Yours will be built around your brand and your customers.</p>
+    </div>
+    <div class="work">
+      <figure class="reveal"><div class="thumb"><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80" alt="Modern barbershop interior" loading="lazy"><b>Sharp &amp; Co.</b></div><figcaption><strong>Barbershop</strong><span>Online booking, price list, opening hours</span></figcaption></figure>
+      <figure class="reveal"><div class="thumb"><img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=800&q=80" alt="Warm independent café interior" loading="lazy"><b>The Daily Grind</b></div><figcaption><strong>Café</strong><span>Menu, location map, catering enquiries</span></figcaption></figure>
+      <figure class="reveal"><div class="thumb"><img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=800&q=80" alt="Electrician working with tools" loading="lazy"><b>Bright Spark</b></div><figcaption><strong>Electrician</strong><span>Services, areas covered, one-tap call button</span></figcaption></figure>
+    </div>
+    <!-- SWAP or delete: early-client offer. Only keep if you'll honour it -->
+    <div class="early reveal">
+      <p><strong>Taking on my first few clients.</strong> Early clients get 15% off and a place in my portfolio.</p>
+      <a class="btn btn-ghost btn-sm" href="mailto:ayomide5462@gmail.com?subject=Early%20client%20offer">Claim it</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. PRICING ============ -->
+<!-- SWAP: all prices and features are placeholders. Edit to what you'll really deliver -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="reveal">
+      <h2>Simple, fixed prices</h2>
+      <p class="lede">You know the cost before we start. No hourly billing, no surprises.</p>
+    </div>
+    <div class="plans">
+
+      <article class="plan reveal">
+        <h3>Starter</h3>
+        <p class="for">Get online fast</p>
+        <p class="price">€300</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>One-page website</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Mobile-friendly design</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Contact button or form</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Live in 7 days</li>
+        </ul>
+        <a class="btn btn-ghost" href="mailto:ayomide5462@gmail.com?subject=Starter%20package">Choose Starter</a>
+      </article>
+
+      <article class="plan best reveal">
+        <span class="badge">Most popular</span>
+        <h3>Standard</h3>
+        <p class="for">Get found and get booked</p>
+        <p class="price">€600</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Up to 4 pages</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Booking link or WhatsApp button</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Google Business and local search setup</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Two rounds of changes</li>
+        </ul>
+        <a class="btn btn-primary" href="mailto:ayomide5462@gmail.com?subject=Standard%20package">Choose Standard</a>
+      </article>
+
+      <article class="plan reveal">
+        <h3>Premium</h3>
+        <p class="for">The full presence</p>
+        <p class="price">€1,100</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Up to 8 pages</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Gallery, menu or online booking</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>I write the copy for you</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>3 months of support</li>
+        </ul>
+        <a class="btn btn-ghost" href="mailto:ayomide5462@gmail.com?subject=Premium%20package">Choose Premium</a>
+      </article>
+
+    </div>
+    <p class="fineprint reveal">Not sure which fits? Ask for a free quote and I'll recommend one.</p>
+  </div>
+</section>
+
+<!-- ============ 7. FINAL CTA ============ -->
+<section class="final" id="contact">
+  <div class="wrap reveal">
+    <h2>Ready for a website that works as hard as you do?</h2>
+    <p>Tell me about your business and I'll send a free quote within 24 hours.</p>
+    <a class="btn btn-primary" href="mailto:ayomide5462@gmail.com?subject=Website%20quote">Get a free quote</a>
+    <!-- SWAP: your email / WhatsApp number -->
+    <p class="links">Or message me directly: <a href="mailto:ayomide5462@gmail.com">ayomide5462@gmail.com</a></p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ 8. FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="yr">2026</span> Ayomide Ogun-Ajala</span>
+    <!-- SWAP: your location -->
+    <span>Websites for local businesses in Ireland</span>
+  </div>
+</footer>
+
+<script>
+// Sticky nav gets a hairline once you scroll
+const nav = document.querySelector('.nav');
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+onScroll();
+window.addEventListener('scroll', onScroll, { passive: true });
+
+// Gentle fade-in on scroll (skipped when the visitor prefers reduced motion)
+const items = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  items.forEach((el, i) => { el.style.transitionDelay = (i % 4) * 70 + 'ms'; io.observe(el); });
+} else {
+  items.forEach(el => el.classList.add('in'));
+}
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
